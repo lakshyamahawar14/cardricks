@@ -1,6 +1,6 @@
 <template>
   <div
-    class="fixed left-0 top-[50px] w-[250px] h-[calc(100vh-50px)] bg-slate-800 flex flex-col items-start p-4 overflow-hidden z-10"
+    class="fixed left-0 top-[50px] w-[250px] h-[calc(100vh-50px)] bg-slate-800 flex flex-col items-start p-4 overflow-hidden z-20"
   >
     <div class="text-white flex flex-col">
       <div v-for="chapter in chapters" :key="chapter.title" class="mb-4">
@@ -48,7 +48,7 @@ import { store, setActiveLink } from "../store";
 
 interface Chapter {
   title: string;
-  links: { text: string; id: string }[]; // Updated interface to include id
+  links: { text: string; id: string }[];
   path: string;
   expanded: boolean;
 }
@@ -86,7 +86,15 @@ const setActiveChapterByPath = (path: string) => {
     if (chapter.path === path) {
       chapter.expanded = true;
       chapterFound = true;
-      setActiveLink(chapter.title, chapter.links[0].text); // Set active link by text
+      const queryScrollTo = route.query.scrollTo as string | undefined;
+      if (queryScrollTo) {
+        const link = chapter.links.find((link) => link.id === queryScrollTo);
+        if (link) {
+          setActiveLink(chapter.title, link.text);
+        }
+      } else {
+        setActiveLink(chapter.title, chapter.links[0].text);
+      }
     } else {
       chapter.expanded = false;
     }
@@ -99,6 +107,11 @@ const setActiveChapterByPath = (path: string) => {
 onMounted(() => {
   const path = route.path.slice(1);
   setActiveChapterByPath(path);
+
+  const queryScrollTo = route.query.scrollTo as string | undefined;
+  if (queryScrollTo) {
+    document.getElementById(queryScrollTo)?.scrollIntoView();
+  }
 });
 
 watch(
@@ -114,7 +127,10 @@ const handleLinkClick = (
   link: { text: string; id: string }
 ) => {
   setActiveLink(chapter.title, link.text);
-  router.push(`/${chapter.path}`);
+  router.push({
+    path: `/${chapter.path}`,
+    query: { scrollTo: link.id },
+  });
 
   const event = new CustomEvent("scrollToElement", {
     detail: { elementId: link.id },

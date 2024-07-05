@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <div class="p-4" id="ch1link1">
+    <div class="mb-4 p-4" id="ch1link1">
       <h1 class="font-nova text-[1.7rem] font-bold">
         1. The Mind Reading Card Trick
       </h1>
@@ -54,8 +54,13 @@
         10. Have the volunteer turn over the selected card and then reveal it
         matches your prediction!
       </p>
+      <div
+        class="border-[1px] border-black p-4 h-[100vh] my-4 flex justify-center items-center z-[10]"
+      >
+        <Card character="A" :icon="faHeart" color="red" :size="1" />
+      </div>
     </div>
-    <div class="p-4" id="ch1link2">
+    <div class="mb-4 p-4" id="ch1link2">
       <h1 class="font-nova text-[1.7rem] font-bold">
         2. The Impossible Three Card Trick
       </h1>
@@ -81,7 +86,7 @@
       </p>
     </div>
 
-    <div class="p-4" id="ch1link3">
+    <div class="mb-4 p-4" id="ch1link3">
       <h1 class="font-nova text-[1.7rem] font-bold">
         2. The Impossible Three Card Trick
       </h1>
@@ -111,21 +116,31 @@
 
 <script setup lang="ts">
 import { onMounted } from "vue";
+import { useRoute } from "vue-router";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import Card from "../components/Card.vue";
+
+const route = useRoute();
+
+const scrollToElement = (elementId: string) => {
+  const element = document.getElementById(elementId);
+  if (element) {
+    element.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+};
 
 onMounted(() => {
+  const scrollTo = route.query.scrollTo as string | undefined;
+  if (scrollTo) {
+    scrollToElement(scrollTo);
+  }
+
   document.addEventListener("scrollToElement", (event: Event) => {
     const customEvent = event as CustomEvent<{ elementId: string }>;
     const { elementId } = customEvent.detail;
     scrollToElement(elementId);
   });
 });
-
-const scrollToElement = (elementId: string) => {
-  const element = document.getElementById(elementId);
-  if (element) {
-    console.log(element);
-    element.scrollIntoView({ behavior: "smooth", block: "start" });
-  }
-};
 </script>
+
 <style scoped></style>

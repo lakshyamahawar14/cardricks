@@ -5,6 +5,7 @@ export default {
     extend: {
       fontFamily: {
         'nova': ['Nova Mono'],
+        'inter': ['Inter']
       }},
   },
   plugins: [],

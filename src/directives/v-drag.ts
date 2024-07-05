@@ -1,22 +1,39 @@
-export default {
+
+
+const drag = {
   mounted(el: HTMLElement) {
-    el.style.cursor = 'move';
+    let initialX: number, initialY: number, offsetX: number, offsetY: number;
 
     const onMouseMove = (event: MouseEvent) => {
-      const rect = el.getBoundingClientRect();
-      el.style.left = `${event.clientX - rect.width / 2}px`;
-      el.style.top = `${event.clientY - rect.height / 2}px`;
-      el.style.position = 'absolute';
+      const moveX = event.clientX - initialX;
+      const moveY = event.clientY - initialY;
+
+      el.style.transform = `translate(${offsetX + moveX}px, ${offsetY + moveY}px)`;
     };
 
-    const onMouseUp = () => {
+    const onMouseUp = (event: MouseEvent) => {
+      offsetX += event.clientX - initialX;
+      offsetY += event.clientY - initialY;
+
       document.removeEventListener('mousemove', onMouseMove);
       document.removeEventListener('mouseup', onMouseUp);
     };
 
-    el.addEventListener('mousedown', () => {
+    const onMouseDown = (event: MouseEvent) => {
+      initialX = event.clientX;
+      initialY = event.clientY;
+
+      const style = window.getComputedStyle(el);
+      const matrix = new DOMMatrixReadOnly(style.transform);
+      offsetX = matrix.m41;
+      offsetY = matrix.m42;
+
       document.addEventListener('mousemove', onMouseMove);
       document.addEventListener('mouseup', onMouseUp);
-    });
+    };
+
+    el.addEventListener('mousedown', onMouseDown);
   },
 };
+
+export default drag;
