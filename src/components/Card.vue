@@ -6,9 +6,9 @@
       width: `${cardWidth}px`,
       height: `${cardHeight}px`,
       borderRadius: `${cardWidth / 15}px`,
-      borderWidth: `${props.size}px`,
+      borderWidth: `1px`,
     }"
-    class="card bg-white border-black flex flex-col justify-between shadow-md"
+    class="absolute cursor-pointer bg-white border-black flex flex-col justify-between active:cursor-grabbing"
   >
     <p
       :style="{
@@ -73,12 +73,4 @@ const handleDragEnd = () => {
 };
 </script>
 
-<style scoped>
-.card {
-  cursor: pointer;
-}
-
-.card:active {
-  cursor: grabbing;
-}
-</style>
+<style scoped></style>

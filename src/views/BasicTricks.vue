@@ -1,12 +1,14 @@
 <template>
   <div>
-    <div class="mb-4 p-4" :id="currentLinkId">
-      <h1 class="text-[1.7rem] font-bold">{{ currentLink?.text }}</h1>
+    <div class="p-4" :id="currentLinkId">
+      <h1 class="text-[1.7rem] font-bold text-slate-800">
+        {{ currentLink?.text }}
+      </h1>
       <h2 class="text-[1.45rem] my-2">{{ currentLink?.description }}</h2>
       <p
         v-for="step in currentLink?.steps"
         :key="step"
-        class="text-[1.2rem] p-2 my-2 border-l-[5px] border-[rgb(30,41,59)]"
+        class="text-[1.2rem] p-2 my-2 border-l-[3px] border-[rgb(30,41,59)]"
       >
         {{ step }}
       </p>

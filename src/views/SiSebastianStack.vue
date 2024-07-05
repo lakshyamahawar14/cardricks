@@ -1,27 +1,24 @@
 <template>
   <div>
-    <div class="mb-4 p-4" :id="currentLinkId">
-      <h1 class="text-[1.7rem] font-bold">{{ currentLink?.text }}</h1>
+    <div class="p-4" :id="currentLinkId">
+      <h1 class="text-[1.7rem] font-bold text-slate-800">
+        {{ currentLink?.text }}
+      </h1>
       <h2 class="text-[1.45rem] my-2">{{ currentLink?.description }}</h2>
       <p
         v-for="step in currentLink?.steps"
         :key="step"
-        class="text-[1.2rem] p-2 my-2 border-l-[5px] border-[rgb(30,41,59)]"
+        class="text-[1.2rem] p-2 my-2 border-l-[3px] border-[rgb(30,41,59)]"
       >
         {{ step }}
       </p>
-      <div
-        class="border-[1px] border-black p-4 h-[100vh] mt-4 flex justify-center items-center z-[10]"
-      >
-        <Card character="A" :icon="faHeart" color="red" :size="1" />
-      </div>
+      <Playground />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
-import Card from "../components/Card.vue";
+import Playground from "../components/Playground.vue";
 import { useRoute } from "vue-router";
 import { ref, watch } from "vue";
 import { setActiveLink } from "../store";
