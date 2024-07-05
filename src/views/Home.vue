@@ -6,7 +6,7 @@
       >
         Welcome to Cardricks!
       </h1>
-      <h2 class="text-[1.45rem] my-2">
+      <h2 class="text-[1.4rem] my-2 text-center mt-4">
         At Cardricks, you can learn card tricks and perform their right inside
         your browser.
       </h2>

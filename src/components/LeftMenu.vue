@@ -8,29 +8,30 @@
           class="flex items-center cursor-pointer text-[1rem]"
           @click="toggleChapter(chapter)"
         >
-          <font-awesome-icon
-            :icon="chapter.expanded ? 'chevron-down' : 'chevron-right'"
-            class="pr-[10px]"
+          <FontAwesomeIcon
+            :icon="chapter.expanded ? faChevronDown : faChevronRight"
+            class="w-4 pr-1"
           />
           <p>{{ chapter.title }}</p>
         </div>
-        <div v-if="chapter.expanded" class="flex flex-col">
+        <div v-if="chapter.expanded" class="flex flex-col mt-2">
           <div
             v-for="link in chapter.links"
             :key="link.text"
-            class="flex items-start pl-[25px] pt-1 cursor-pointer"
+            class="relative flex items-center ml-3 px-2 cursor-pointer py-2 rounded hover:bg-slate-600"
+            :class="{
+              'bg-slate-700': isActiveLink(chapter.path, link.id),
+              'pl-6': isActiveLink(chapter.path, link.id),
+            }"
             @click="handleLinkClick(chapter, link)"
           >
-            <div class="h-full mt-[10px]">
+            <div class="absolute top-[0.95rem] left-2">
               <div
                 v-if="isActiveLink(chapter.path, link.id)"
-                class="w-[5px] h-[5px] bg-green-500 rounded-full mr-[10px]"
+                class="w-2 h-2 bg-green-500 rounded-full mr-[8px]"
               ></div>
             </div>
-            <span
-              :class="{ 'font-bold': isActiveLink(chapter.path, link.id) }"
-              class="text-[0.9rem]"
-            >
+            <span class="text-[0.9rem]">
               {{ link.text }}
             </span>
           </div>

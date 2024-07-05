@@ -4,15 +4,24 @@
       <h1 class="text-[1.7rem] font-bold text-slate-800">
         {{ currentLink?.text }}
       </h1>
-      <h2 class="text-[1.45rem] my-2">{{ currentLink?.description }}</h2>
+      <h2 class="text-[1.25rem] my-4">{{ currentLink?.description }}</h2>
       <p
         v-for="step in currentLink?.steps"
         :key="step"
-        class="text-[1.2rem] p-2 my-2 border-l-[3px] border-[rgb(30,41,59)]"
+        class="text-[1.1rem] p-2 mb-2 border-l-[3px] border-[rgb(30,41,59)]"
       >
         {{ step }}
       </p>
-      <Playground />
+      <div
+        class="flex justify-end items-center flex-col h-[calc(100vh-50px-1rem)]"
+      >
+        <h2
+          class="text-[1.25rem] h-[calc(50px+2rem)] flex justify-center items-center"
+        >
+          Follow the steps given above and learn this trick!
+        </h2>
+        <Playground />
+      </div>
     </div>
   </div>
 </template>
