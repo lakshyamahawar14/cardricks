@@ -4,9 +4,13 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        'nova': ['Nova Mono'],
         'inter': ['Inter']
-      }},
+      }
+    },
+    screens: {
+      'md': '600px',
+      'lg': '950px',
+    },
   },
   plugins: [],
 }

@@ -1,8 +1,8 @@
 <template>
   <div class="p-4">
-    <div class="">
-      <h1 class="font-nova text-[1.7rem] font-bold">Welcome to Cardricks!</h1>
-      <h2 class="text-[1.5rem] my-2">
+    <div>
+      <h1 class="text-[1.7rem] font-bold">Welcome to Cardricks!</h1>
+      <h2 class="text-[1.45rem] my-2">
         At Cardricks, you can learn card tricks and perform their right inside
         your browser.
       </h2>
@@ -17,8 +17,8 @@
       </p>
       <p class="text-[1.2rem] p-2">Happy Learning!</p>
     </div>
-    <div class="flex justify-center flex-col items-center">
-      <p class="font-bold font-nova text-[1.7rem] my-2">Start The Tricks!</p>
+    <div class="flex justify-center flex-col items-center my-4">
+      <p class="font-bold text-[1.7rem] my-2">Start The Tricks!</p>
       <button
         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
         @click="startTricks"
@@ -36,8 +36,8 @@ import { setActiveLink } from "../store";
 const router = useRouter();
 
 const startTricks = () => {
-  setActiveLink("Basic Tricks", "Arranging Cards");
-  router.push("/basic-tricks");
+  setActiveLink("Basic Tricks", "1");
+  router.push({ path: "/basic-tricks/1" });
 };
 </script>
 

@@ -4,7 +4,7 @@
     <div class="flex justify-center items-center">
       <LeftMenu />
       <div
-        class="flex absolute top-[50px] left-[250px] flex-col h-[calc(100vh-50px)] w-[calc(100vw-250px)] overflow-x-hidden"
+        class="flex absolute top-[50px] lg:left-[300px] md:left-[250px] left-[300px] flex-col h-[calc(100vh-50px)] w-[calc(100vw-300px)] lg:w-[calc(100vw-300px)] md:w-[calc(100vw-250px)] overflow-x-hidden"
       >
         <router-view />
       </div>

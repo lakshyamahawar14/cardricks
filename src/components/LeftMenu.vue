@@ -1,6 +1,6 @@
 <template>
   <div
-    class="fixed left-0 top-[50px] w-[250px] h-[calc(100vh-50px)] bg-slate-800 flex flex-col items-start p-4 overflow-hidden z-20"
+    class="fixed left-0 top-[50px] lg:w-[300px] md:w-[250px] w-[300px] h-[calc(100vh-50px)] bg-slate-800 flex flex-col items-start p-4 overflow-hidden z-10"
   >
     <div class="text-white flex flex-col">
       <div v-for="chapter in chapters" :key="chapter.title" class="mb-4">
@@ -23,11 +23,16 @@
           >
             <div class="h-full mt-[10px]">
               <div
-                v-if="isActiveLink(chapter.title, link.text)"
+                v-if="isActiveLink(chapter.path, link.id)"
                 class="w-[5px] h-[5px] bg-green-500 rounded-full mr-[10px]"
               ></div>
             </div>
-            <span class="text-[0.9rem]">{{ link.text }}</span>
+            <span
+              :class="{ 'font-bold': isActiveLink(chapter.path, link.id) }"
+              class="text-[0.9rem]"
+            >
+              {{ link.text }}
+            </span>
           </div>
         </div>
       </div>
@@ -36,8 +41,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch, onMounted } from "vue";
-import { useRouter, useRoute } from "vue-router";
+import { ref } from "vue";
+import { useRouter } from "vue-router";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import {
@@ -59,91 +64,40 @@ const chapters = ref<Chapter[]>([
   {
     title: "Basic Tricks",
     links: [
-      { text: "Mind Reading Card Trick", id: "ch1link1" },
-      { text: "The Impossible Three Card Trick", id: "ch1link2" },
-      { text: "The Upside Down Card Trick", id: "ch1link3" },
+      { text: "Mind Reading Card Trick", id: "1" },
+      { text: "The Impossible Three Card Trick", id: "2" },
+      { text: "The Upside Down Card Trick", id: "3" },
     ],
     path: "basic-tricks",
-    expanded: false,
+    expanded: true,
   },
   {
     title: "Si Sebastian Stack",
     links: [
-      { text: "Arranging Cards", id: "ch2link1" },
-      { text: "Process", id: "ch2link2" },
+      { text: "Arranging Cards", id: "1" },
+      { text: "Process", id: "2" },
     ],
     path: "si-sebastian-stack",
-    expanded: false,
+    expanded: true,
   },
 ]);
 
 const router = useRouter();
-const route = useRoute();
-
-const setActiveChapterByPath = (path: string) => {
-  let chapterFound = false;
-  chapters.value.forEach((chapter) => {
-    if (chapter.path === path) {
-      chapter.expanded = true;
-      chapterFound = true;
-      const queryScrollTo = route.query.scrollTo as string | undefined;
-      if (queryScrollTo) {
-        const link = chapter.links.find((link) => link.id === queryScrollTo);
-        if (link) {
-          setActiveLink(chapter.title, link.text);
-        }
-      } else {
-        setActiveLink(chapter.title, chapter.links[0].text);
-      }
-    } else {
-      chapter.expanded = false;
-    }
-  });
-  if (!chapterFound && path === "") {
-    chapters.value[0].expanded = true;
-  }
-};
-
-onMounted(() => {
-  const path = route.path.slice(1);
-  setActiveChapterByPath(path);
-
-  const queryScrollTo = route.query.scrollTo as string | undefined;
-  if (queryScrollTo) {
-    document.getElementById(queryScrollTo)?.scrollIntoView();
-  }
-});
-
-watch(
-  () => route.path,
-  (newPath) => {
-    setActiveChapterByPath(newPath.slice(1));
-  },
-  { immediate: true }
-);
 
 const handleLinkClick = (
   chapter: Chapter,
   link: { text: string; id: string }
 ) => {
-  setActiveLink(chapter.title, link.text);
-  router.push({
-    path: `/${chapter.path}`,
-    query: { scrollTo: link.id },
-  });
-
-  const event = new CustomEvent("scrollToElement", {
-    detail: { elementId: link.id },
-  });
-  document.dispatchEvent(event);
+  setActiveLink(chapter.path, link.id);
+  router.push(`/${chapter.path}/${link.id}`);
 };
 
 const toggleChapter = (chapter: Chapter) => {
   chapter.expanded = !chapter.expanded;
 };
 
-const isActiveLink = (chapterTitle: string, linkText: string) => {
-  return store.activeChapter === chapterTitle && store.activeLink === linkText;
+const isActiveLink = (chapterPath: string, linkId: string) => {
+  return store.activeChapter === chapterPath && store.activeLink === linkId;
 };
 </script>
 

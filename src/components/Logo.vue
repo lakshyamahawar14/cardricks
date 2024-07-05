@@ -1,9 +1,7 @@
 <template>
   <div class="flex justify-center items-center">
     <router-link to="/" class="flex items-center" @click="resetActiveLink">
-      <h1 class="text-white font-bold italic text-[1.1rem] pl-4 font-nova">
-        Cardricks
-      </h1>
+      <h1 class="text-white font-bold text-[1.1rem] pl-4">Cardricks</h1>
     </router-link>
   </div>
 </template>

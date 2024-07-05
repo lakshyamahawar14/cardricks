@@ -8,7 +8,7 @@
       borderRadius: `${cardWidth / 15}px`,
       borderWidth: `${props.size}px`,
     }"
-    class="card bg-white border-black flex flex-col justify-between"
+    class="card bg-white border-black flex flex-col justify-between shadow-md"
   >
     <p
       :style="{
