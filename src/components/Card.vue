@@ -8,7 +8,7 @@
       borderRadius: `${cardWidth / 15}px`,
       borderWidth: `1px`,
     }"
-    class="absolute cursor-pointer bg-white border-black flex flex-col justify-between active:cursor-grabbing"
+    class="absolute shadow-lg cursor-pointer bg-white flex flex-col justify-between active:cursor-grabbing"
   >
     <p
       :style="{

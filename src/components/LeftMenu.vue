@@ -1,6 +1,6 @@
 <template>
   <div
-    class="fixed left-0 top-[50px] lg:w-[300px] md:w-[250px] w-[300px] h-[calc(100vh-50px)] bg-slate-800 flex flex-col items-start p-4 overflow-hidden z-[20]"
+    class="fixed left-0 top-[50px] lg:w-[300px] md:w-[250px] w-[300px] h-[calc(100vh-50px)] bg-slate-800 flex flex-col items-center p-4 overflow-hidden z-[20]"
   >
     <div class="text-white flex flex-col">
       <div v-for="chapter in chapters" :key="chapter.title" class="mb-4">
@@ -18,7 +18,7 @@
           <div
             v-for="link in chapter.links"
             :key="link.text"
-            class="relative flex items-center ml-3 px-2 cursor-pointer py-2 rounded hover:bg-slate-600"
+            class="relative flex items-center mx-3 p-2 cursor-pointer rounded hover:bg-slate-600 w-[250px] lg:w-[250px] md:w-[200px]"
             :class="{
               'bg-slate-700': isActiveLink(chapter.path, link.id),
               'pl-6': isActiveLink(chapter.path, link.id),
@@ -65,9 +65,10 @@ const chapters = ref<Chapter[]>([
   {
     title: "Basic Tricks",
     links: [
-      { text: "Mind Reading Card Trick", id: "1" },
+      { text: "The Mind Reading Card Trick", id: "1" },
       { text: "The Impossible Three Card Trick", id: "2" },
       { text: "The Upside Down Card Trick", id: "3" },
+      { text: "Mind Reading With Friends", id: "4" },
     ],
     path: "basic-tricks",
     expanded: true,

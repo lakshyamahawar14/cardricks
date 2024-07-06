@@ -6,12 +6,13 @@
       <Logo />
       <p class="text-slate-200 text-[1rem] pl-2">v1.0</p>
     </div>
-    <button
-      type="submit"
+    <a
+      href="https://github.com/lakshyamahawar14/cardricks"
+      target="blank"
       class="flex justify-center items-center bg-gray-300 hover:bg-gray-400 text-slate-800 font-bold p-[2px] rounded"
     >
       <FontAwesomeIcon :icon="['fab', 'github']" class="text-[1.5rem]" />
-    </button>
+    </a>
   </header>
 </template>
 
