@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-wrap justify-center items-start gap-4">
+  <div id="trickdiv" class="flex flex-wrap justify-center items-start gap-4">
     <div class="flex flex-col lg:flex-row gap-4 w-full">
       <div class="p-4 flex-1" :id="currentLinkId">
         <h1 class="text-[1.7rem] font-bold text-slate-800">
@@ -18,16 +18,18 @@
       </div>
 
       <div
-        class="relative flex-1 lg:flex lg:flex-col lg:w-[300px] p-4 border-2 justify-center items-center"
+        class="relative flex flex-2 lg:flex-col p-4 justify-center items-center"
       >
-        <div class="h-full flex justify-center items-start">
+        <div
+          class="h-full flex justify-center items-start text-[1.7rem] font-bold"
+        >
           <p>Advertisement</p>
         </div>
       </div>
     </div>
 
     <div
-      class="flex justify-start items-center flex-col w-full lg:w-[calc(100vw - 300px)] lg:h-[calc(100vh - 50px)] p-4"
+      class="flex justify-evenly items-center flex-col w-full lg:w-[calc(100vw-300px)] lg:h-[calc(100vh-50px)] p-4"
     >
       <h2 class="text-[1.25rem] font-bold mb-4">
         Follow the steps given above and learn this trick!
@@ -38,7 +40,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from "vue";
+import { onMounted, ref, watch } from "vue";
 import { useRoute } from "vue-router";
 import { setActiveLink } from "../store";
 import Playground from "../components/Playground.vue";
@@ -84,6 +86,7 @@ if (currentLink.value) {
 watch(
   () => route.params.id,
   (newId) => {
+    scrollToElement();
     currentLinkId.value = Array.isArray(newId) ? newId[0] : newId ?? "1";
     currentLink.value = siSebastianStackLinks.find(
       (link) => link.id === currentLinkId.value
@@ -93,4 +96,15 @@ watch(
     }
   }
 );
+
+onMounted(() => {
+  scrollToElement();
+});
+
+function scrollToElement() {
+  const element = document.getElementById("trickdiv");
+  if (element) {
+    element.scrollIntoView();
+  }
+}
 </script>

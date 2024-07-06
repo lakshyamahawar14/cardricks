@@ -1,5 +1,5 @@
 <template>
-  <div class="p-4">
+  <div id="homediv" class="p-4">
     <div>
       <h1
         class="text-[2rem] font-bold pl-4 pb-4 border-l-[3px] border-b-[3px] rounded-bl-[10px] border-[rgb(30,41,59)] text-slate-800"
@@ -39,6 +39,7 @@
 <script setup lang="ts">
 import { useRouter } from "vue-router";
 import { setActiveLink } from "../store";
+import { onMounted } from "vue";
 
 const router = useRouter();
 
@@ -46,6 +47,17 @@ const startTricks = () => {
   setActiveLink("Basic Tricks", "1");
   router.push({ path: "/basic-tricks/1" });
 };
+
+onMounted(() => {
+  scrollToElement();
+});
+
+function scrollToElement() {
+  const element = document.getElementById("trickdiv");
+  if (element) {
+    element.scrollIntoView();
+  }
+}
 </script>
 
 <style scoped></style>

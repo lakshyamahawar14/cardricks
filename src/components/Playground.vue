@@ -1,6 +1,6 @@
 <template>
   <div
-    class="relative bg-white shadow-inner border-[2px] rounded-xl p-4 h-[70vh] w-[calc(90vw-300px)] lg:w-[calc(90vw-300px)] sm:w-[calc(90vw-250px)] flex justify-center items-center z-[10] overflow-hidden"
+    class="relative bg-white shadow-inner border-[2px] rounded-xl p-4 h-[80vh] w-[calc(90vw-300px)] lg:w-[calc(90vw-300px)] sm:w-[calc(90vw-250px)] flex justify-center items-center z-[10] overflow-hidden"
     id="playground"
   >
     <div class="absolute top-2 right-2 flex space-x-2">
