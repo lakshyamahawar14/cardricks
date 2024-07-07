@@ -1,10 +1,15 @@
 <template>
-  <div class="w-full h-screen bg-white custom-scrollbar">
+  <div class="w-screen h-screen bg-white custom-scrollbar">
     <Header />
-    <div class="flex justify-center items-center">
+    <div
+      class="relative flex justify-center items-center w-full h-full pt-[50px]"
+    >
       <LeftMenu />
       <div
-        class="flex absolute top-[50px] lg:left-[300px] md:left-[250px] left-[300px] flex-col h-[calc(100vh-50px)] w-[calc(100vw-300px)] lg:w-[calc(100vw-300px)] md:w-[calc(100vw-250px)] overflow-x-hidden"
+        class="flex relative left-0 w-full h-full overflow-x-hidden"
+        :style="{
+          paddingLeft: store.isSmallScreen ? '0px' : '300px',
+        }"
       >
         <router-view />
       </div>
@@ -15,6 +20,7 @@
 <script setup lang="ts">
 import Header from "./components/Header.vue";
 import LeftMenu from "./components/LeftMenu.vue";
+import { store } from "./store";
 </script>
 
 <style scoped></style>

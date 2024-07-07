@@ -1,6 +1,9 @@
 <template>
   <div
-    class="fixed left-0 top-[50px] lg:w-[300px] md:w-[250px] w-[300px] h-[calc(100vh-50px)] bg-slate-800 flex flex-col items-start p-4 overflow-hidden z-[20]"
+    class="fixed flex w-[100%] md:flex lg:flex left-0 top-[50px] md:w-[300px] lg:w-[300px] h-[calc(100vh-50px)] bg-slate-800 flex-col items-start p-4 overflow-hidden z-[20]"
+    :style="{
+      display: store.isSmallScreen && !store.isMenuOpen ? 'none' : 'flex',
+    }"
   >
     <div class="text-white flex flex-col">
       <div v-for="chapter in chapters" :key="chapter.title" class="mb-4">
@@ -18,7 +21,7 @@
           <div
             v-for="link in chapter.links"
             :key="link.text"
-            class="relative flex items-center mx-3 p-2 cursor-pointer rounded hover:bg-slate-600 w-[250px] lg:w-[250px] md:w-[200px]"
+            class="relative flex items-center mx-3 p-2 cursor-pointer rounded hover:bg-slate-600 w-[250px] lg:w-[250px]"
             :class="{
               'bg-slate-700': isActiveLink(chapter.path, link.id),
               'pl-6': isActiveLink(chapter.path, link.id),
