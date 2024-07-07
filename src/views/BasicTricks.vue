@@ -28,7 +28,7 @@
           <p
             class="text-[1.1rem] p-2 border-l-[3px] border-[rgb(30,41,59)] my-2 shadow-md"
           >
-            Click on 'Spawn Cards' to spawn new cards.
+            Click on 'Spawn' to spawn new cards.
           </p>
           <p
             class="text-[1.1rem] p-2 border-l-[3px] border-[rgb(30,41,59)] my-2 shadow-md"

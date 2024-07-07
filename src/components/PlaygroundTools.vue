@@ -4,7 +4,7 @@
       class="hover:bg-slate-900 text-white bg-slate-700 font-bold py-2 px-4 rounded-l-[50px]"
       @click="spawnCards"
     >
-      Spawn Cards
+      Spawn
     </button>
     <button
       class="hover:bg-slate-900 text-white bg-slate-700 font-bold py-2 px-4"

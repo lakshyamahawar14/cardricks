@@ -2,14 +2,13 @@
   <div
     v-drag
     @dragend="handleDragEnd"
-    :key="props.key"
     :style="{
       width: `${cardWidth}px`,
       height: `${cardHeight}px`,
       borderRadius: `${cardWidth / 15}px`,
       borderWidth: `1px`,
     }"
-    class="absolute border-[1px] border-slate-900 cursor-pointer bg-white flex flex-col justify-between active:cursor-grabbing"
+    class="absolute border-[1px] bg-white border-slate-900 cursor-pointer flex flex-col justify-between active:cursor-grabbing z-[10]"
   >
     <p
       :style="{
@@ -54,7 +53,6 @@
 
 <script setup lang="ts">
 const props = defineProps<{
-  key: number;
   character: string;
   image: string;
   color: string;

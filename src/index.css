@@ -16,15 +16,15 @@
 }
 
 *::-webkit-scrollbar-track {
-  background: #ffffff;
+  background: rgb(30, 41, 59);
 }
 
 *::-webkit-scrollbar-thumb {
   background-color: rgb(30, 41, 59);
-  border-radius: 10px;
+  border-radius: 20px;
 }
 
 * {
   scrollbar-width: 20px;
-  scrollbar-color: rgb(30, 41, 59) #ffffff;
+  scrollbar-color: rgb(148 163 184) rgb(30, 41, 59);
 }

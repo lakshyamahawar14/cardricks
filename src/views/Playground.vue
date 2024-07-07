@@ -1,21 +1,20 @@
 <template>
   <div
-    class="relative bg-white h-full w-full flex justify-center items-center z-[10] overflow-hidden"
+    class="flex h-full w-full justify-start flex-col items-center bg-white overflow-hidden"
   >
-    <div class="absolute top-2">
+    <div class="absolute top-4 z-[15]">
       <PlaygroundTools
         @toggle-fullscreen="togglePlayground"
         @clear-playground="clearPlayground"
         @spawn-cards="initializeSuits"
       />
     </div>
-    <div
-      class="absolute h-[30vh] w-full bottom-0 left-0 flex justify-evenly bg-slate-800"
-    >
+
+    <div class="relative h-full w-full flex p-4 bg-slate-800 overflow-auto">
       <div
         v-for="(suit, suitIndex) in suits"
         :key="suitIndex"
-        class="flex flex-col items-center justify-center"
+        class="flex items-end justify-center px-4"
       >
         <Card
           v-for="(card, cardIndex) in suit.cards"
@@ -24,9 +23,36 @@
           :image="card.imageName"
           :color="card.color"
           :size="card.size"
+          :style="{
+            marginLeft: cardIndex > 0 ? '-60px' : '0',
+            position: 'relative',
+          }"
         />
       </div>
     </div>
+
+    <!-- <div
+      class="absolute h-[20vh] w-full bottom-0 left-0 flex justify-between bg-slate-800 overflow-x-auto"
+    >
+      <div
+        v-for="(suit, suitIndex) in suits"
+        :key="suitIndex"
+        class="flex items-center justify-center px-4"
+      >
+        <Card
+          v-for="(card, cardIndex) in suit.cards"
+          :key="cardIndex"
+          :character="card.character"
+          :image="card.imageName"
+          :color="card.color"
+          :size="card.size"
+          :style="{
+            marginLeft: cardIndex > 0 ? '-60px' : '0',
+            position: 'relative',
+          }"
+        />
+      </div>
+    </div> -->
   </div>
 </template>
 
@@ -109,6 +135,6 @@ const togglePlayground = () => {
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 1000;
+  z-index: 100000;
 }
 </style>
