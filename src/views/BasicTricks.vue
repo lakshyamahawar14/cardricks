@@ -1,5 +1,5 @@
 <template>
-  <div id="basicTricksDiv" class="p-4">
+  <div class="p-4" id="mainApp">
     <div class="flex justify-center flex-col items-start">
       <h1 class="text-[1.7rem] font-bold text-slate-800" :id="currentLinkId">
         {{ currentLink?.text }}
@@ -155,8 +155,9 @@ onMounted(() => {
 });
 
 function scrollToElement() {
-  const element = document.getElementById("basicTricksDiv");
+  const element = document.getElementById("mainApp");
   if (element) {
+    console.log(element);
     element.scrollIntoView();
   }
 }

@@ -1,18 +1,14 @@
 <template>
-  <div class="w-screen h-screen bg-white custom-scrollbar">
+  <div class="w-auto h-screen bg-white overflow-hidden">
     <Header />
+    <LeftMenu />
     <div
-      class="relative flex justify-center items-center w-full h-full pt-[50px]"
+      class="flex relative w-full top-[50px] h-[calc(100vh-50px)] justify-start items-start overflow-auto"
+      :style="{
+        paddingLeft: store.isSmallScreen ? '0' : '300px',
+      }"
     >
-      <LeftMenu />
-      <div
-        class="flex relative left-0 w-full h-full overflow-x-hidden"
-        :style="{
-          paddingLeft: store.isSmallScreen ? '0' : '300px',
-        }"
-      >
-        <router-view />
-      </div>
+      <router-view />
     </div>
   </div>
 </template>

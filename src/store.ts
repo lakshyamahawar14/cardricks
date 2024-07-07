@@ -10,7 +10,7 @@ interface Store {
 export const store = reactive<Store>({
   activeChapter: '',
   activeLink: '',
-  isSmallScreen: window.innerWidth < 640,
+  isSmallScreen: window.innerWidth <= 600,
   isMenuOpen: false,
 });
 

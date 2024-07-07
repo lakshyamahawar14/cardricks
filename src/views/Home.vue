@@ -1,6 +1,6 @@
 <template>
-  <div id="homediv" class="p-4">
-    <div class="flex justify-center flex-col items-start py-4">
+  <div class="p-4" id="mainApp">
+    <div class="flex justify-center flex-col items-start pb-4">
       <h1
         class="text-[2rem] font-bold pl-4 pb-4 border-l-[3px] border-b-[3px] rounded-bl-[10px] border-[rgb(30,41,59)] text-slate-800"
       >
@@ -10,7 +10,7 @@
         At Cardricks, you can learn card tricks and perform their right inside
         your browser.
       </h2>
-      <p class="text-[1.2rem] text-justify py-4">
+      <p class="text-[1.2rem] text-justify my-4">
         Dive into the learning of some cards magic tricks performed by well
         known magicians all over the world. These tricks are compiled from all
         over the internet. There are playgrounds for each trick where you can
@@ -53,7 +53,7 @@ onMounted(() => {
 });
 
 function scrollToElement() {
-  const element = document.getElementById("trickdiv");
+  const element = document.getElementById("mainApp");
   if (element) {
     element.scrollIntoView();
   }
