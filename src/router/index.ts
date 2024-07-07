@@ -2,6 +2,7 @@ import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 import BasicTricks from '../views/BasicTricks.vue';
 import SiSebastianStack from '../views/SiSebastianStack.vue';
 import Home from '../views/Home.vue';
+import Playground from '../views/Playground.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -19,6 +20,11 @@ const routes: Array<RouteRecordRaw> = [
     name: 'SiSebastianStack',
     component: SiSebastianStack,
   },
+  {
+    path: '/playground/',
+    name: 'Playground',
+    component: Playground
+  }
 ];
 
 const router = createRouter({

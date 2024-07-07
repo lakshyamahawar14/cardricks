@@ -47,6 +47,9 @@
 import { onMounted, ref, watch } from "vue";
 import { useRoute } from "vue-router";
 import { setActiveLink } from "../store";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
 
 const route = useRoute();
 
@@ -155,7 +158,9 @@ watch(
   }
 );
 
-const goToPlayground = () => {};
+const goToPlayground = () => {
+  router.push({ path: "/playground" });
+};
 
 onMounted(() => {
   scrollToElement();
