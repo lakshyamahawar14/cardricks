@@ -1,5 +1,5 @@
 <template>
-  <div class="p-4">
+  <div class="">
     <div class="flex justify-center flex-col items-start pb-4">
       <h1
         class="text-[2rem] font-bold pl-4 pb-4 border-l-[3px] border-b-[3px] rounded-bl-[10px] border-[rgb(30,41,59)] text-slate-800"
