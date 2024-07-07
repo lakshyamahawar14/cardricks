@@ -1,18 +1,41 @@
 <template>
   <div class="">
-    <div class="flex justify-center flex-col items-start">
-      <h1 class="text-[1.7rem] font-bold text-slate-800" :id="currentLinkId">
-        {{ currentLink?.text }}
-      </h1>
-      <h2 class="text-[1.25rem] my-4">{{ currentLink?.description }}</h2>
-      <div class="">
-        <p
-          v-for="(step, index) in currentLink?.steps"
-          :key="step"
-          class="text-[1.1rem] p-2 border-l-[3px] border-[rgb(30,41,59)] my-2 shadow-md"
-        >
-          {{ index + 1 }}. {{ step }}
-        </p>
+    <div class="flex justify-center flex-col lg:flex-row gap-4">
+      <div class="flex justify-start flex-col items-start w-full">
+        <h1 class="text-[1.7rem] font-bold text-slate-800" :id="currentLinkId">
+          {{ currentLink?.text }}
+        </h1>
+        <h2 class="text-[1.25rem] my-4">{{ currentLink?.description }}</h2>
+        <div class="">
+          <p
+            v-for="(step, index) in currentLink?.steps"
+            :key="step"
+            class="text-[1.1rem] p-2 border-l-[3px] border-[rgb(30,41,59)] my-2 shadow-md"
+          >
+            {{ index + 1 }}. {{ step }}
+          </p>
+        </div>
+      </div>
+
+      <div class="relative w-full lg:w-1/3">
+        <h1 class="text-[1.7rem] font-bold text-slate-800">Tips</h1>
+        <div class="flex flex-col my-4">
+          <p
+            class="text-[1.1rem] p-2 border-l-[3px] border-[rgb(30,41,59)] my-2 shadow-md"
+          >
+            Maximize the Playground before performing the tricks.
+          </p>
+          <p
+            class="text-[1.1rem] p-2 border-l-[3px] border-[rgb(30,41,59)] my-2 shadow-md"
+          >
+            Click on 'Spawn Cards' to spawn new cards.
+          </p>
+          <p
+            class="text-[1.1rem] p-2 border-l-[3px] border-[rgb(30,41,59)] my-2 shadow-md"
+          >
+            Reset button clears the Playground.
+          </p>
+        </div>
       </div>
     </div>
 
