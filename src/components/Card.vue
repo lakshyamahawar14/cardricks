@@ -2,13 +2,14 @@
   <div
     v-drag
     @dragend="handleDragEnd"
+    :key="props.key"
     :style="{
       width: `${cardWidth}px`,
       height: `${cardHeight}px`,
       borderRadius: `${cardWidth / 15}px`,
       borderWidth: `1px`,
     }"
-    class="absolute shadow-lg cursor-pointer bg-white flex flex-col justify-between active:cursor-grabbing"
+    class="absolute border-[1px] border-slate-900 cursor-pointer bg-white flex flex-col justify-between active:cursor-grabbing"
   >
     <p
       :style="{
@@ -22,19 +23,20 @@
     >
       {{ props.character }}
     </p>
-    <p
+    <div
       :style="{
         height: `${(2 * cardHeight) / 7}px`,
-        color: props.color,
         fontSize: `${cardWidth / 5}px`,
       }"
       class="flex justify-center items-center"
     >
-      <FontAwesomeIcon
-        :icon="[props.icon.prefix, props.icon.iconName]"
-        :style="{ fontSize: `${cardHeight / 5}px` }"
+      <img
+        :src="'/src/assets/' + props.image + '.jpg'"
+        :alt="props.character"
+        :style="{ width: `${cardHeight / 5}px`, height: `${cardHeight / 5}px` }"
+        draggable="false"
       />
-    </p>
+    </div>
     <p
       :style="{
         height: `${cardHeight / 7}px`,
@@ -51,12 +53,10 @@
 </template>
 
 <script setup lang="ts">
-import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import { library } from "@fortawesome/fontawesome-svg-core";
-
 const props = defineProps<{
+  key: number;
   character: string;
-  icon: any;
+  image: string;
   color: string;
   size: number;
 }>();
@@ -66,10 +66,8 @@ const emits = defineEmits(["remove"]);
 const cardHeight = 105 * props.size;
 const cardWidth = 75 * props.size;
 
-library.add(props.icon);
-
 const handleDragEnd = () => {
-  emits("remove", { character: props.character, suit: props.icon.iconName });
+  emits("remove", { character: props.character, image: props.image });
 };
 </script>
 
