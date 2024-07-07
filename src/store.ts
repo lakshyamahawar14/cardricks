@@ -21,6 +21,5 @@ export const setActiveLink = (chapter: string, link: string) => {
 
 export const toggleMenuOpen = () => {
   store.isMenuOpen = !store.isMenuOpen
-  console.log('menu', store.isMenuOpen);
 }
 
