@@ -28,13 +28,17 @@
       </div>
     </div>
 
-    <div
-      class="flex justify-evenly items-center flex-col w-full lg:w-[calc(100vw-300px)] lg:h-[calc(100vh-50px)] p-4"
-    >
-      <h2 class="text-[1.25rem] font-bold mb-4">
+    <div class="flex justify-evenly items-center flex-col w-full p-4 py-6">
+      <h2 class="text-[1.7rem] font-bold mb-4">
         Follow the steps given above and learn this trick!
       </h2>
-      <Playground />
+      <button
+        type="submit"
+        class="bg-slate-700 hover:bg-slate-900 text-white font-bold py-2 px-4 rounded"
+        @click="goToPlayground"
+      >
+        Go To Playground
+      </button>
     </div>
   </div>
 </template>
@@ -43,7 +47,6 @@
 import { onMounted, ref, watch } from "vue";
 import { useRoute } from "vue-router";
 import { setActiveLink } from "../store";
-import Playground from "../components/Playground.vue";
 
 const route = useRoute();
 
@@ -96,6 +99,12 @@ watch(
     }
   }
 );
+
+const goToPlayground = () => {};
+
+onMounted(() => {
+  scrollToElement();
+});
 
 onMounted(() => {
   scrollToElement();
