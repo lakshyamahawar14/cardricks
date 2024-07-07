@@ -1,7 +1,6 @@
 <template>
   <div
     class="relative bg-white shadow-inner border-[2px] rounded-xl p-4 h-full w-full flex justify-center items-center z-[10] overflow-hidden"
-    id="playground"
   >
     <div class="absolute top-2 right-2 flex space-x-2">
       <button
@@ -37,7 +36,7 @@ const isFullscreen = ref(false);
 const resetPlayground = () => {};
 
 const togglePlayground = () => {
-  const el = document.getElementById("playground");
+  const el = document.getElementById("mainApp");
   if (el) {
     el.classList.toggle("fullscreen");
     isFullscreen.value = !isFullscreen.value;
