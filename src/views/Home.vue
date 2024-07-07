@@ -1,16 +1,16 @@
 <template>
   <div id="homediv" class="p-4">
-    <div>
+    <div class="flex justify-center flex-col items-start py-4">
       <h1
         class="text-[2rem] font-bold pl-4 pb-4 border-l-[3px] border-b-[3px] rounded-bl-[10px] border-[rgb(30,41,59)] text-slate-800"
       >
         Welcome to Cardricks!
       </h1>
-      <h2 class="text-[1.4rem] my-2 text-center mt-4">
+      <h2 class="text-[1.4rem] my-4 text-center">
         At Cardricks, you can learn card tricks and perform their right inside
         your browser.
       </h2>
-      <p class="text-[1.2rem] p-2">
+      <p class="text-[1.2rem] text-justify py-4">
         Dive into the learning of some cards magic tricks performed by well
         known magicians all over the world. These tricks are compiled from all
         over the internet. There are playgrounds for each trick where you can
@@ -19,9 +19,9 @@
         any trick name in order to expand or shrink it. You can click on any
         sublink inside a trick in order to jump to that.
       </p>
-      <p class="text-[1.2rem] p-2">Happy Learning!</p>
+      <p class="text-[1.2rem] py-4">Happy Learning!</p>
     </div>
-    <div class="flex justify-center flex-col items-center my-4">
+    <div class="flex justify-center flex-col items-center py-4">
       <p class="font-bold text-[1.7rem] my-2 text-slate-800">
         Learn The Tricks!
       </p>

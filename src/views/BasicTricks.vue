@@ -1,35 +1,23 @@
 <template>
-  <div id="trickdiv" class="flex flex-wrap justify-center items-start gap-4">
-    <div class="flex flex-col lg:flex-row gap-4 w-full">
-      <div class="p-4 flex-1" :id="currentLinkId">
-        <h1 class="text-[1.7rem] font-bold text-slate-800">
-          {{ currentLink?.text }}
-        </h1>
-        <h2 class="text-[1.25rem] my-4">{{ currentLink?.description }}</h2>
-        <div class="space-y-4">
-          <p
-            v-for="(step, index) in currentLink?.steps"
-            :key="step"
-            class="text-[1.1rem] p-2 border-l-[3px] border-[rgb(30,41,59)] shadow-md"
-          >
-            {{ index + 1 }}. {{ step }}
-          </p>
-        </div>
-      </div>
-
-      <div
-        class="relative flex flex-2 lg:flex-col p-4 justify-center items-center"
-      >
-        <div
-          class="h-full flex justify-center items-start text-[1.7rem] font-bold"
+  <div id="basicTricksDiv" class="p-4">
+    <div class="flex justify-center flex-col items-start">
+      <h1 class="text-[1.7rem] font-bold text-slate-800" :id="currentLinkId">
+        {{ currentLink?.text }}
+      </h1>
+      <h2 class="text-[1.25rem] my-4">{{ currentLink?.description }}</h2>
+      <div class="">
+        <p
+          v-for="(step, index) in currentLink?.steps"
+          :key="step"
+          class="text-[1.1rem] p-2 border-l-[3px] border-[rgb(30,41,59)] my-2 shadow-md"
         >
-          <p>Advertisement</p>
-        </div>
+          {{ index + 1 }}. {{ step }}
+        </p>
       </div>
     </div>
 
-    <div class="flex justify-evenly items-center flex-col w-full p-4 py-6">
-      <h2 class="text-[1.7rem] font-bold mb-4">
+    <div class="flex justify-center flex-col items-start py-4">
+      <h2 class="text-[1.5rem] font-bold py-4">
         Follow the steps given above and learn this trick!
       </h2>
       <button
@@ -167,9 +155,11 @@ onMounted(() => {
 });
 
 function scrollToElement() {
-  const element = document.getElementById("trickdiv");
+  const element = document.getElementById("basicTricksDiv");
   if (element) {
     element.scrollIntoView();
   }
 }
 </script>
+
+<style scoped></style>

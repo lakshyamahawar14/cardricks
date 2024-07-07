@@ -5,10 +5,14 @@
       display: store.isSmallScreen && !store.isMenuOpen ? 'none' : 'flex',
     }"
   >
-    <div class="text-white flex flex-col">
-      <div v-for="chapter in chapters" :key="chapter.title" class="mb-4">
+    <div class="text-white flex flex-col w-full">
+      <div
+        v-for="chapter in chapters"
+        :key="chapter.title"
+        class="flex items-center justify-center cursor-pointer flex-col w-full mb-4"
+      >
         <div
-          class="flex items-center cursor-pointer text-[1rem]"
+          class="flex justify-start items-center text-[1rem] w-full"
           @click="toggleChapter(chapter)"
         >
           <FontAwesomeIcon
@@ -17,7 +21,10 @@
           />
           <p>{{ chapter.title }}</p>
         </div>
-        <div v-if="chapter.expanded" class="flex flex-col mt-2">
+        <div
+          v-if="chapter.expanded"
+          class="flex justify-center items-center flex-col py-2"
+        >
           <div
             v-for="link in chapter.links"
             :key="link.text"

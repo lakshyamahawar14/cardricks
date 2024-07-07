@@ -8,7 +8,7 @@
       <div
         class="flex relative left-0 w-full h-full overflow-x-hidden"
         :style="{
-          paddingLeft: store.isSmallScreen ? '0px' : '300px',
+          paddingLeft: store.isSmallScreen ? '0' : '300px',
         }"
       >
         <router-view />
