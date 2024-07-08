@@ -1,25 +1,25 @@
 <template>
   <div class="inline-flex text-[0.8rem]">
     <button
-      class="hover:bg-slate-900 text-white bg-slate-700 font-bold py-2 px-4 rounded-l-[50px]"
+      class="bg-slate-700 hover:text-sky-400 hover:bg-slate-800 text-slate-200 font-bold py-1 px-4 text-[0.8rem] rounded-l-[50px]"
       @click="spawnCards"
     >
       Spawn
     </button>
     <button
-      class="hover:bg-slate-900 text-white bg-slate-700 font-bold py-2 px-4"
+      class="bg-slate-700 hover:text-sky-400 hover:bg-slate-800 text-slate-200 font-bold py-1 px-4 text-[0.8rem]"
     >
       Shuffle
     </button>
 
     <button
-      class="hover:bg-slate-900 text-white bg-slate-700 font-bold py-2 px-4"
+      class="bg-slate-700 hover:text-sky-400 hover:bg-slate-800 text-slate-200 font-bold py-1 px-4 text-[0.8rem]"
       @click="resetPlayground"
     >
       Reset
     </button>
     <button
-      class="hover:bg-slate-900 text-white bg-slate-700 font-bold py-2 px-4 rounded-r-[50px]"
+      class="bg-slate-700 hover:text-sky-400 hover:bg-slate-800 text-slate-200 font-bold py-1 px-4 text-[0.8rem] rounded-r-[50px]"
       @click="togglePlayground"
     >
       <FontAwesomeIcon :icon="isFullscreen ? faCompress : faExpand" />

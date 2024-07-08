@@ -1,49 +1,38 @@
 <template>
-  <div class="p-6 flex flex-col justify-between">
+  <div class="p-10 flex flex-col justify-between">
     <div class="flex justify-center items-start flex-col lg:flex-row gap-4">
-      <div class="flex justify-start flex-col items-start w-full">
-        <h1 class="text-[1.5rem] font-bold text-slate-800" :id="currentLinkId">
-          {{ currentLink?.text }}
-        </h1>
-        <h2 class="text-[1.2rem] my-4">{{ currentLink?.description }}</h2>
-        <div class="w-full">
+      <div class="flex flex-col w-full">
+        <div class="flex justify-start flex-col items-start w-full">
+          <h2 class="font-medium text-sky-400">
+            {{ store.activeChapterName }}
+          </h2>
+          <h1
+            class="text-[1.7rem] py-4 font-extrabold text-slate-200"
+            :id="currentLinkId"
+          >
+            {{ currentLink?.text }}
+          </h1>
+          <h2 class="text-[1.2rem]">{{ currentLink?.description }}</h2>
+        </div>
+        <div class="w-full py-8">
           <p
             v-for="(step, index) in currentLink?.steps"
             :key="step"
-            class="text-[1rem] p-2 border-l-[3px] border-[rgb(30,41,59)] my-2 shadow-md"
+            class="text-justify text-[1rem] p-2 border-l-[3px] border-slate-600 shadow-slate-800 hover:text-sky-400 hover:border-sky-400 cursor-pointer"
           >
             {{ index + 1 }}. {{ step }}
-          </p>
-        </div>
-      </div>
-
-      <div class="relative w-full lg:w-1/3">
-        <h1 class="text-[1.7rem] font-bold text-slate-800">Tips</h1>
-        <div class="flex flex-col my-4">
-          <p
-            class="text-[1rem] p-2 border-l-[3px] border-[rgb(30,41,59)] my-2 shadow-md"
-          >
-            Maximize the Playground before performing the tricks.
-          </p>
-          <p
-            class="text-[1rem] p-2 border-l-[3px] border-[rgb(30,41,59)] my-2 shadow-md"
-          >
-            Click on 'Spawn' to spawn new cards.
-          </p>
-          <p
-            class="text-[1rem] p-2 border-l-[3px] border-[rgb(30,41,59)] my-2 shadow-md"
-          >
-            Reset button clears the Playground.
           </p>
         </div>
       </div>
     </div>
 
     <div class="flex justify-center flex-col items-start">
-      <h2 class="text-[1.5rem] font-bold py-4">Practice in Playground</h2>
+      <h2 class="text-[1.7rem] font-bold py-4 text-slate-200">
+        Practice in Playground
+      </h2>
       <button
         type="submit"
-        class="bg-slate-700 hover:bg-slate-900 text-white font-bold py-2 px-4 rounded"
+        class="bg-slate-700 hover:text-sky-400 hover:bg-slate-800 text-slate-200 font-bold py-1 px-4 rounded text-[0.8rem]"
         @click="goToPlayground"
       >
         Go To Playground
@@ -53,6 +42,7 @@
 </template>
 
 <script setup lang="ts">
+import { store } from "../store";
 import { onMounted, ref, watch } from "vue";
 import { useRoute } from "vue-router";
 import { setActiveLink } from "../store";

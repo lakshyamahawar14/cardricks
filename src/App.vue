@@ -3,12 +3,15 @@
     <Header />
     <LeftMenu />
     <div
-      class="flex relative w-full top-[50px] h-[calc(100vh-50px)] justify-start items-start overflow-auto"
+      class="flex relative w-full top-[60px] h-[calc(100vh-60px)] justify-start items-start overflow-auto"
       :style="{
-        paddingLeft: store.isSmallScreen ? '0' : '300px',
+        paddingLeft: store.isSmallScreen ? '0' : '325px',
       }"
     >
-      <router-view class="w-full min-h-[calc(100vh-50px)]" id="mainApp" />
+      <router-view
+        class="w-full min-h-[calc(100vh-60px)] bg-slate-900 text-slate-400 leading-7"
+        id="mainApp"
+      />
     </div>
   </div>
 </template>

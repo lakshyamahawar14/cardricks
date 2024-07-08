@@ -2,7 +2,7 @@
   <div class="p-6 flex flex-col justify-start items-center">
     <div class="flex justify-center flex-col items-start py-4">
       <h1
-        class="text-[2rem] font-bold pl-4 pb-4 border-l-[3px] border-b-[3px] rounded-bl-[10px] border-[rgb(30,41,59)] text-slate-800"
+        class="text-[2rem] font-bold pl-4 pb-4 border-l-[3px] border-b-[3px] border-sky-400 text-slate-200"
       >
         Welcome to Cardricks!
       </h1>
@@ -22,12 +22,12 @@
       <p class="text-[1rem] py-4">Happy Learning!</p>
     </div>
     <div class="flex justify-center flex-col items-center py-4 w-full">
-      <p class="font-bold text-[1.7rem] my-2 text-slate-800">
+      <p class="font-bold text-[1.7rem] my-4 text-slate-200">
         Learn The Tricks!
       </p>
       <button
         type="submit"
-        class="bg-slate-700 hover:bg-slate-900 text-white font-bold py-2 px-4 rounded text-[0.8rem]"
+        class="bg-slate-700 hover:text-sky-400 hover:bg-slate-800 text-slate-200 font-bold py-1 px-4 rounded text-[0.8rem]"
         @click="startTricks"
       >
         Start

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex h-full justify-start flex-col items-center border-2 bg-white overflow-hidden"
+    class="flex h-full justify-start flex-col items-center bg-slate-900 overflow-hidden"
   >
     <div class="absolute top-4 z-[15]">
       <PlaygroundTools
@@ -10,7 +10,7 @@
       />
     </div>
 
-    <div class="relative h-full w-full flex p-4 bg-slate-800 overflow-auto">
+    <div class="relative h-full w-full flex p-4 bg-slate-900 overflow-auto">
       <div
         v-for="(suit, suitIndex) in suits"
         :key="suitIndex"

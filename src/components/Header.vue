@@ -1,6 +1,6 @@
 <template>
   <header
-    class="fixed top-0 w-screen h-[50px] bg-slate-800 flex justify-between items-center z-[20] overflow-hidden px-9"
+    class="fixed top-0 w-screen h-[60px] bg-slate-900 flex justify-between items-center z-[20] overflow-hidden px-10 border-b-[1px] border-slate-700"
   >
     <div class="flex justify-start items-center">
       <Logo />

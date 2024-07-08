@@ -1,18 +1,18 @@
 <template>
   <div
-    class="fixed flex w-[100%] md:flex lg:flex left-0 top-[50px] md:w-[300px] lg:w-[300px] h-[calc(100vh-50px)] bg-slate-800 flex-col items-start p-4 overflow-hidden z-[20]"
+    class="fixed flex w-[100%] md:flex lg:flex left-0 top-[60px] md:w-[325px] lg:w-[325px] h-[calc(100vh-60px)] bg-slate-900 border-r-[1px] border-slate-700 flex-col items-start p-4 pl-10 overflow-hidden z-[20]"
     :style="{
       display: store.isSmallScreen && !store.isMenuOpen ? 'none' : 'flex',
     }"
   >
-    <div class="text-white flex flex-col w-full">
+    <div class="text-slate-400 flex flex-col w-full">
       <div
         v-for="chapter in chapters"
         :key="chapter.title"
         class="flex items-center justify-center cursor-pointer flex-col w-full mb-4"
       >
         <div
-          class="flex justify-start items-center text-[1rem] w-full"
+          class="flex justify-start items-center text-[0.9rem] w-full text-slate-200 font-bold"
           @click="toggleChapter(chapter)"
         >
           <FontAwesomeIcon
@@ -28,20 +28,24 @@
           <div
             v-for="link in chapter.links"
             :key="link.text"
-            class="relative flex items-center mx-3 p-2 cursor-pointer rounded hover:bg-slate-600 w-[250px] lg:w-[250px]"
+            class="relative flex items-center mx-3 p-2 cursor-pointer rounded hover:text-slate-200 w-[260px] lg:w-[260px]"
             :class="{
-              'bg-slate-700': isActiveLink(chapter.path, link.id),
               'pl-6': isActiveLink(chapter.path, link.id),
+              'text-sky-400': isActiveLink(chapter.path, link.id),
+              'pointer-events-none': isActiveLink(chapter.path, link.id),
             }"
             @click="handleLinkClick(chapter, link)"
           >
             <div class="absolute top-[0.95rem] left-2">
               <div
                 v-if="isActiveLink(chapter.path, link.id)"
-                class="w-2 h-2 bg-green-500 rounded-full mr-[8px]"
+                class="w-2 h-2 bg-sky-400 rounded-full mr-[8px]"
               ></div>
             </div>
-            <span class="text-[0.9rem]">
+            <span
+              class="text-[0.9rem] font-medium"
+              :class="{ 'font-semibold': isActiveLink(chapter.path, link.id) }"
+            >
               {{ link.text }}
             </span>
           </div>
