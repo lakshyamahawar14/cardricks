@@ -1,16 +1,16 @@
 <template>
-  <div class="">
-    <div class="flex justify-center flex-col lg:flex-row gap-4">
+  <div class="p-6 flex flex-col justify-between">
+    <div class="flex justify-center items-start flex-col lg:flex-row gap-4">
       <div class="flex justify-start flex-col items-start w-full">
-        <h1 class="text-[1.7rem] font-bold text-slate-800" :id="currentLinkId">
+        <h1 class="text-[1.5rem] font-bold text-slate-800" :id="currentLinkId">
           {{ currentLink?.text }}
         </h1>
-        <h2 class="text-[1.25rem] my-4">{{ currentLink?.description }}</h2>
-        <div class="">
+        <h2 class="text-[1.2rem] my-4">{{ currentLink?.description }}</h2>
+        <div class="w-full">
           <p
             v-for="(step, index) in currentLink?.steps"
             :key="step"
-            class="text-[1.1rem] p-2 border-l-[3px] border-[rgb(30,41,59)] my-2 shadow-md"
+            class="text-[1rem] p-2 border-l-[3px] border-[rgb(30,41,59)] my-2 shadow-md"
           >
             {{ index + 1 }}. {{ step }}
           </p>
@@ -18,20 +18,20 @@
       </div>
 
       <div class="relative w-full lg:w-1/3">
-        <h1 class="text-[1.7rem] font-bold text-slate-800">Tips</h1>
+        <h1 class="text-[1.5rem] font-bold text-slate-800">Tips</h1>
         <div class="flex flex-col my-4">
           <p
-            class="text-[1.1rem] p-2 border-l-[3px] border-[rgb(30,41,59)] my-2 shadow-md"
+            class="text-[1rem] p-2 border-l-[3px] border-[rgb(30,41,59)] my-2 shadow-md"
           >
             Maximize the Playground before performing the tricks.
           </p>
           <p
-            class="text-[1.1rem] p-2 border-l-[3px] border-[rgb(30,41,59)] my-2 shadow-md"
+            class="text-[1rem] p-2 border-l-[3px] border-[rgb(30,41,59)] my-2 shadow-md"
           >
             Click on 'Spawn' to spawn new cards.
           </p>
           <p
-            class="text-[1.1rem] p-2 border-l-[3px] border-[rgb(30,41,59)] my-2 shadow-md"
+            class="text-[1rem] p-2 border-l-[3px] border-[rgb(30,41,59)] my-2 shadow-md"
           >
             Reset button clears the Playground.
           </p>
@@ -40,9 +40,7 @@
     </div>
 
     <div class="flex justify-center flex-col items-start py-4">
-      <h2 class="text-[1.5rem] font-bold py-4">
-        Follow the steps given above and learn this trick!
-      </h2>
+      <h2 class="text-[1.5rem] font-bold py-4">Practice on Playground</h2>
       <button
         type="submit"
         class="bg-slate-700 hover:bg-slate-900 text-white font-bold py-2 px-4 rounded"

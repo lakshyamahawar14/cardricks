@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex h-full w-full justify-start flex-col items-center bg-white overflow-hidden"
+    class="flex h-full justify-start flex-col items-center border-2 bg-white overflow-hidden"
   >
     <div class="absolute top-4 z-[15]">
       <PlaygroundTools

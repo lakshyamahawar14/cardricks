@@ -8,7 +8,7 @@
         paddingLeft: store.isSmallScreen ? '0' : '300px',
       }"
     >
-      <router-view class="p-4 w-full" id="mainApp" />
+      <router-view class="w-full min-h-[calc(100vh-50px)]" id="mainApp" />
     </div>
   </div>
 </template>

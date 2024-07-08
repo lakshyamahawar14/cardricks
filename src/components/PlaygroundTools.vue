@@ -30,7 +30,6 @@
 <script setup lang="ts">
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { faExpand, faCompress } from "@fortawesome/free-solid-svg-icons";
-import { defineEmits } from "vue";
 
 const emit = defineEmits([
   "toggle-fullscreen",
