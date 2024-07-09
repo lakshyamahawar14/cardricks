@@ -56,7 +56,6 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
 import { useRouter } from "vue-router";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
@@ -64,7 +63,7 @@ import {
   faChevronRight,
   faChevronDown,
 } from "@fortawesome/free-solid-svg-icons";
-import { store, setActiveLink } from "../store";
+import { store, getChapters } from "../store";
 
 interface Chapter {
   title: string;
@@ -75,28 +74,7 @@ interface Chapter {
 
 library.add(faChevronRight, faChevronDown);
 
-const chapters = ref<Chapter[]>([
-  {
-    title: "Basic Tricks",
-    links: [
-      { text: "The Mind Reading Card Trick", id: "1" },
-      { text: "The Impossible Three Card Trick", id: "2" },
-      { text: "The Upside Down Card Trick", id: "3" },
-      { text: "Mind Reading With Friends", id: "4" },
-    ],
-    path: "basic-tricks",
-    expanded: true,
-  },
-  {
-    title: "Si Sebastian Stack",
-    links: [
-      { text: "Arranging Cards", id: "1" },
-      { text: "Process", id: "2" },
-    ],
-    path: "si-sebastian-stack",
-    expanded: true,
-  },
-]);
+const chapters = getChapters();
 
 const router = useRouter();
 
@@ -104,8 +82,7 @@ const handleLinkClick = (
   chapter: Chapter,
   link: { text: string; id: string }
 ) => {
-  setActiveLink(chapter.path, link.id);
-  router.push(`/${chapter.path}/${link.id}`);
+  router.push(`/tricks/${chapter.path}/${link.id}`);
 };
 
 const toggleChapter = (chapter: Chapter) => {

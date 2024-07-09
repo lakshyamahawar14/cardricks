@@ -37,7 +37,12 @@ const emit = defineEmits([
   "spawn-cards",
 ]);
 
-const isFullscreen = false;
+defineProps({
+  isFullscreen: {
+    type: Boolean,
+    required: true,
+  },
+});
 
 const togglePlayground = () => {
   emit("toggle-fullscreen");

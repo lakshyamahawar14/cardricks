@@ -4,6 +4,7 @@
   >
     <div class="absolute top-4 z-[15]">
       <PlaygroundTools
+        :isFullscreen="isFullscreen"
         @toggle-fullscreen="togglePlayground"
         @clear-playground="clearPlayground"
         @spawn-cards="initializeSuits"

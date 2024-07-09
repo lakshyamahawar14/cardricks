@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
-import BasicTricks from '../views/BasicTricks.vue';
-import SiSebastianStack from '../views/SiSebastianStack.vue';
+import Tricks from '../views/Tricks.vue';
 import Home from '../views/Home.vue';
 import Playground from '../views/Playground.vue';
 
@@ -11,14 +10,9 @@ const routes: Array<RouteRecordRaw> = [
     component: Home,
   },
   {
-    path: '/basic-tricks/:id?',
-    name: 'BasicTricks',
-    component: BasicTricks,
-  },
-  {
-    path: '/si-sebastian-stack/:id?',
-    name: 'SiSebastianStack',
-    component: SiSebastianStack,
+    path: '/tricks/:path/:id?',
+    name: 'Tricks',
+    component: Tricks,
   },
   {
     path: '/playground/',

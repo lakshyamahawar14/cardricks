@@ -38,14 +38,12 @@
 
 <script setup lang="ts">
 import { useRouter } from "vue-router";
-import { setActiveLink } from "../store";
 import { onMounted } from "vue";
 
 const router = useRouter();
 
 const startTricks = () => {
-  setActiveLink("Basic Tricks", "1");
-  router.push({ path: "/basic-tricks/1" });
+  router.push({ path: "/tricks/basic-tricks/1" });
 };
 
 onMounted(() => {
