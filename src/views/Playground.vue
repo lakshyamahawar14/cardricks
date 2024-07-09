@@ -11,7 +11,7 @@
       />
     </div>
 
-    <div class="relative h-full w-full flex p-4 bg-slate-900 overflow-auto">
+    <div class="relative h-full w-full flex p-2 bg-slate-900 overflow-auto">
       <div
         v-for="(suit, suitIndex) in suits"
         :key="suitIndex"

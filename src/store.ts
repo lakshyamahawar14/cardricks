@@ -184,6 +184,10 @@ export const setActiveLink = (chapter: string, link: string) => {
   })
 };
 
+export const isActiveLink = (chapterPath: string, linkId: string) => {
+  return store.activeChapter === chapterPath && store.activeLink === linkId;
+};
+
 export const toggleMenuOpen = () => {
   store.isMenuOpen = !store.isMenuOpen
 }

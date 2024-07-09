@@ -1,6 +1,6 @@
 <template>
   <div
-    class="fixed flex w-[100%] md:flex lg:flex left-0 top-[60px] md:w-[325px] lg:w-[325px] h-[calc(100vh-60px)] bg-slate-900 border-r-[1px] border-slate-700 flex-col items-start p-4 pl-10 overflow-hidden z-[20]"
+    class="fixed flex w-full md:flex lg:flex left-0 top-[60px] md:w-[325px] lg:w-[325px] h-[calc(100vh-60px)] bg-slate-900 border-r-[1px] border-slate-700 flex-col items-start p-6 lg:pl-16 overflow-hidden z-[20]"
     :style="{
       display: store.isSmallScreen && !store.isMenuOpen ? 'none' : 'flex',
     }"
@@ -23,29 +23,18 @@
         </div>
         <div
           v-if="chapter.expanded"
-          class="flex justify-center items-center flex-col py-2"
+          class="flex justify-center items-center flex-col py-2 w-full"
         >
           <div
             v-for="link in chapter.links"
             :key="link.text"
-            class="relative flex items-center mx-3 p-2 cursor-pointer rounded hover:text-slate-200 w-[260px] lg:w-[260px]"
+            class="relative flex justify-start items-center py-2 cursor-pointer hover:text-slate-200 w-full"
             :class="{
-              'pl-6': isActiveLink(chapter.path, link.id),
-              'text-sky-400': isActiveLink(chapter.path, link.id),
-              'pointer-events-none': isActiveLink(chapter.path, link.id),
+              activeLink: isActiveLink(chapter.path, link.id),
             }"
             @click="handleLinkClick(chapter, link)"
           >
-            <div class="absolute top-[0.95rem] left-2">
-              <div
-                v-if="isActiveLink(chapter.path, link.id)"
-                class="w-2 h-2 bg-sky-400 rounded-full mr-[8px]"
-              ></div>
-            </div>
-            <span
-              class="text-[0.9rem] font-medium"
-              :class="{ 'font-semibold': isActiveLink(chapter.path, link.id) }"
-            >
+            <span class="text-[0.9rem] font-medium">
               {{ link.text }}
             </span>
           </div>
@@ -63,7 +52,7 @@ import {
   faChevronRight,
   faChevronDown,
 } from "@fortawesome/free-solid-svg-icons";
-import { store, getChapters } from "../store";
+import { store, getChapters, isActiveLink } from "../store";
 
 interface Chapter {
   title: string;
@@ -88,10 +77,15 @@ const handleLinkClick = (
 const toggleChapter = (chapter: Chapter) => {
   chapter.expanded = !chapter.expanded;
 };
-
-const isActiveLink = (chapterPath: string, linkId: string) => {
-  return store.activeChapter === chapterPath && store.activeLink === linkId;
-};
 </script>
 
-<style scoped></style>
+<style scoped>
+.activeLink {
+  padding-left: 1rem;
+  color: rgb(56 189 248);
+  pointer-events: none;
+  border-radius: none;
+  border-left-width: 3px;
+  border-left-color: rgb(56 189 248);
+}
+</style>

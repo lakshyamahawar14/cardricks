@@ -1,5 +1,5 @@
 <template>
-  <div class="w-auto h-screen bg-white overflow-hidden">
+  <div class="w-auto h-screen overflow-hidden">
     <Header />
     <LeftMenu />
     <div

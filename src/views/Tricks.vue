@@ -1,5 +1,5 @@
 <template>
-  <div class="p-10 flex flex-col justify-between">
+  <div class="p-6 lg:p-10 lg:pr-16 flex flex-col justify-between">
     <div class="flex justify-center items-start flex-col lg:flex-row gap-4">
       <div class="flex flex-col w-full">
         <div class="flex justify-start flex-col items-start w-full">
