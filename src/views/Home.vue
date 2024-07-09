@@ -1,6 +1,6 @@
 <template>
-  <div class="p-6 lg:pr-16 flex flex-col justify-start items-center">
-    <div class="flex justify-center flex-col items-start py-4">
+  <div class="p-6 lg:p-10 lg:pr-16 flex flex-col justify-start items-center">
+    <div class="flex justify-center flex-col items-start mb-4 w-full">
       <h1
         class="text-[2rem] font-bold pl-4 pb-4 border-l-[3px] border-b-[3px] border-sky-400 text-slate-200"
       >
@@ -19,9 +19,9 @@
         any trick name in order to expand or shrink it. You can click on any
         sublink inside a trick in order to jump to that.
       </p>
-      <p class="text-[1rem] py-4">Happy Learning!</p>
+      <p class="text-[1rem] my-4">Happy Learning!</p>
     </div>
-    <div class="flex justify-center flex-col items-center py-4 mb-8 w-full">
+    <div class="flex justify-center flex-col items-center mb-8 w-full">
       <p class="font-bold text-[1.7rem] my-4 text-slate-200">
         Learn The Tricks!
       </p>
