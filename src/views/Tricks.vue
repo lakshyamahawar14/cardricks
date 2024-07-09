@@ -26,7 +26,7 @@
       </div>
     </div>
 
-    <div class="flex justify-center flex-col items-start">
+    <div class="flex justify-center flex-col items-start mb-8">
       <h2 class="text-[1.7rem] font-bold py-4 text-slate-200">
         Practice in Playground
       </h2>
@@ -42,7 +42,7 @@
 </template>
 
 <script setup lang="ts">
-import { store, getLinks, setActiveLink } from "../store";
+import { store, getLinks } from "../store";
 import { onMounted, ref, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
 
@@ -68,14 +68,7 @@ const updateCurrentLink = () => {
   currentLink.value = tricksLinks.value?.find(
     (link) => link.id === currentLinkId.value
   );
-  if (currentLink.value) {
-    setActiveLink(currentPath.value, currentLink.value.id);
-  }
 };
-
-if (currentLink.value) {
-  setActiveLink(currentPath.value, currentLink.value.id);
-}
 
 watch(
   () => route.params,
@@ -93,7 +86,9 @@ watch(
 );
 
 const goToPlayground = () => {
-  router.push({ path: "/playground" });
+  router.push({
+    path: `/playground/${currentPath.value}/${currentLinkId.value}`,
+  });
 };
 
 onMounted(() => {
@@ -102,7 +97,6 @@ onMounted(() => {
 
 function scrollToElement() {
   const element = document.getElementById("mainApp");
-  console.log(element);
   if (element) {
     element.scrollIntoView();
   }

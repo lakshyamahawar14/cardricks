@@ -13,7 +13,7 @@
       >
         <div
           class="flex justify-start items-center text-[0.9rem] w-full text-slate-200 font-bold"
-          @click="toggleChapter(chapter)"
+          @click="() => toggleChapter(chapter)"
         >
           <FontAwesomeIcon
             :icon="chapter.expanded ? faChevronDown : faChevronRight"
@@ -32,7 +32,7 @@
             :class="{
               activeLink: isActiveLink(chapter.path, link.id),
             }"
-            @click="handleLinkClick(chapter, link)"
+            @click="() => handleLinkClick(chapter, link)"
           >
             <span class="text-[0.9rem] font-medium">
               {{ link.text }}
@@ -45,14 +45,21 @@
 </template>
 
 <script setup lang="ts">
-import { useRouter } from "vue-router";
+import { ref, watch } from "vue";
+import { useRouter, useRoute } from "vue-router";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import {
   faChevronRight,
   faChevronDown,
 } from "@fortawesome/free-solid-svg-icons";
-import { store, getChapters, isActiveLink } from "../store";
+import {
+  store,
+  getChapters,
+  getLinks,
+  setActiveLink,
+  isActiveLink,
+} from "../store";
 
 interface Chapter {
   title: string;
@@ -63,9 +70,52 @@ interface Chapter {
 
 library.add(faChevronRight, faChevronDown);
 
-const chapters = getChapters();
+const chapters = ref(getChapters());
 
 const router = useRouter();
+const route = useRoute();
+
+const currentPath = ref(
+  Array.isArray(route.params.path) ? route.params.path[0] : route.params.path
+);
+
+const currentLinkId = ref(
+  Array.isArray(route.params.id) ? route.params.id[0] : route.params.id ?? "1"
+);
+
+const tricksLinks = ref(getLinks(currentPath.value));
+
+const currentLink = ref(
+  tricksLinks.value?.find((link) => link.id === currentLinkId.value)
+);
+
+const updateCurrentLink = () => {
+  tricksLinks.value = getLinks(currentPath.value);
+  currentLink.value = tricksLinks.value?.find(
+    (link) => link.id === currentLinkId.value
+  );
+  if (currentLink.value) {
+    setActiveLink(currentPath.value, currentLink.value.id);
+  }
+};
+
+if (currentLink.value) {
+  setActiveLink(currentPath.value, currentLink.value.id);
+}
+
+watch(
+  () => route.params,
+  (newParams) => {
+    currentPath.value = Array.isArray(newParams.path)
+      ? newParams.path[0]
+      : newParams.path;
+    currentLinkId.value = Array.isArray(newParams.id)
+      ? newParams.id[0]
+      : newParams.id ?? "1";
+    updateCurrentLink();
+  },
+  { immediate: true }
+);
 
 const handleLinkClick = (
   chapter: Chapter,
@@ -75,7 +125,10 @@ const handleLinkClick = (
 };
 
 const toggleChapter = (chapter: Chapter) => {
-  chapter.expanded = !chapter.expanded;
+  const index = chapters.value.findIndex((c) => c.title === chapter.title);
+  if (index !== -1) {
+    chapters.value[index].expanded = !chapters.value[index].expanded;
+  }
 };
 </script>
 

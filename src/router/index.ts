@@ -15,7 +15,7 @@ const routes: Array<RouteRecordRaw> = [
     component: Tricks,
   },
   {
-    path: '/playground/',
+    path: '/playground/:path/:id',
     name: 'Playground',
     component: Playground
   }

@@ -21,7 +21,7 @@
       </p>
       <p class="text-[1rem] py-4">Happy Learning!</p>
     </div>
-    <div class="flex justify-center flex-col items-center py-4 w-full">
+    <div class="flex justify-center flex-col items-center py-4 mb-8 w-full">
       <p class="font-bold text-[1.7rem] my-4 text-slate-200">
         Learn The Tricks!
       </p>

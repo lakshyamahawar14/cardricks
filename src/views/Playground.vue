@@ -31,36 +31,15 @@
         />
       </div>
     </div>
-
-    <!-- <div
-      class="absolute h-[20vh] w-full bottom-0 left-0 flex justify-between bg-slate-800 overflow-x-auto"
-    >
-      <div
-        v-for="(suit, suitIndex) in suits"
-        :key="suitIndex"
-        class="flex items-center justify-center px-4"
-      >
-        <Card
-          v-for="(card, cardIndex) in suit.cards"
-          :key="cardIndex"
-          :character="card.character"
-          :image="card.imageName"
-          :color="card.color"
-          :size="card.size"
-          :style="{
-            marginLeft: cardIndex > 0 ? '-60px' : '0',
-            position: 'relative',
-          }"
-        />
-      </div>
-    </div> -->
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import Card from "../components/Card.vue";
 import PlaygroundTools from "../components/PlaygroundTools.vue";
+import { getLinks } from "../store";
+import { useRoute } from "vue-router";
 
 interface CardData {
   character: string;
@@ -127,6 +106,43 @@ const togglePlayground = () => {
     isFullscreen.value = !isFullscreen.value;
   }
 };
+
+const route = useRoute();
+
+const currentPath = ref(
+  Array.isArray(route.params.path) ? route.params.path[0] : route.params.path
+);
+
+const currentLinkId = ref(
+  Array.isArray(route.params.id) ? route.params.id[0] : route.params.id ?? "1"
+);
+
+const tricksLinks = ref(getLinks(currentPath.value));
+
+const currentLink = ref(
+  tricksLinks.value?.find((link) => link.id === currentLinkId.value)
+);
+
+const updateCurrentLink = () => {
+  tricksLinks.value = getLinks(currentPath.value);
+  currentLink.value = tricksLinks.value?.find(
+    (link) => link.id === currentLinkId.value
+  );
+};
+
+watch(
+  () => route.params,
+  (newParams) => {
+    currentPath.value = Array.isArray(newParams.path)
+      ? newParams.path[0]
+      : newParams.path;
+    currentLinkId.value = Array.isArray(newParams.id)
+      ? newParams.id[0]
+      : newParams.id ?? "1";
+    updateCurrentLink();
+  },
+  { immediate: true }
+);
 </script>
 
 <style scoped>
