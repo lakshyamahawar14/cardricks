@@ -99,6 +99,7 @@ function scrollToElement() {
   const element = document.getElementById("mainApp");
   if (element) {
     element.scrollIntoView();
+    window.scrollTo(0, 0);
   }
 }
 </script>
