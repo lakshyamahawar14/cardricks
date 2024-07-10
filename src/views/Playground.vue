@@ -4,7 +4,7 @@
   >
     <div
       class="absolute top-[calc(60px+0.5rem)] z-[15]"
-      :class="{ 'top-2': isFullscreen }"
+      :style="{ top: isFullscreen ? '0.5rem' : '' }"
     >
       <PlaygroundTools
         :isFullscreen="isFullscreen"
