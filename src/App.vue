@@ -1,15 +1,15 @@
 <template>
-  <div class="w-auto h-screen overflow-hidden">
-    <Header />
+  <div class="w-auto h-auto overflow-hidden">
     <LeftMenu />
+    <Header />
     <div
-      class="flex relative w-full top-[60px] h-[calc(100vh-60px)] justify-start items-start overflow-auto"
+      class="flex relative w-full min-h-[100vh] top-0 justify-start items-start overflow-auto bg-slate-900"
       :style="{
         paddingLeft: store.isSmallScreen ? '0' : '325px',
       }"
     >
       <router-view
-        class="w-full min-h-[calc(100vh-60px)] bg-slate-900 text-slate-400 leading-7"
+        class="w-full h-full min-h-[100vh] bg-slate-900 text-slate-400 leading-7"
         id="mainApp"
       />
     </div>

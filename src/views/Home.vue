@@ -1,5 +1,7 @@
 <template>
-  <div class="p-6 lg:p-10 lg:pr-16 flex flex-col justify-start items-center">
+  <div
+    class="p-6 py-[calc(60px+1.5rem)] lg:py-[calc(60px+2.5rem)] lg:p-10 lg:pr-16 flex flex-col justify-start items-center"
+  >
     <div class="flex justify-center flex-col items-start mb-4 w-full">
       <h1
         class="text-[2rem] font-bold pl-4 pb-4 border-l-[3px] border-b-[3px] border-sky-400 text-slate-200"

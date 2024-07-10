@@ -2,7 +2,7 @@
   <div
     class="flex h-full justify-start flex-col items-center bg-slate-900 overflow-hidden"
   >
-    <div class="absolute top-4 z-[15]">
+    <div class="absolute top-[calc(60px+1rem)] z-[15]">
       <PlaygroundTools
         :isFullscreen="isFullscreen"
         @toggle-fullscreen="togglePlayground"
@@ -11,7 +11,9 @@
       />
     </div>
 
-    <div class="relative h-full w-full flex p-2 bg-slate-900 overflow-auto">
+    <div
+      class="relative h-full w-full flex p-2 pt-[calc(60px+0.5rem)] bg-slate-900 overflow-auto"
+    >
       <div
         v-for="(suit, suitIndex) in suits"
         :key="suitIndex"

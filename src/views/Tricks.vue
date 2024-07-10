@@ -1,5 +1,7 @@
 <template>
-  <div class="p-6 lg:p-10 lg:pr-16 flex flex-col justify-between">
+  <div
+    class="p-6 py-[calc(60px+1.5rem)] lg:py-[calc(60px+2.5rem)] lg:p-10 lg:pr-16 flex flex-col justify-between"
+  >
     <div class="flex justify-center items-start flex-col pb-4">
       <div class="flex flex-col w-full">
         <div class="flex justify-start flex-col items-start w-full">
@@ -19,14 +21,14 @@
           <p
             v-for="(step, index) in currentLink?.steps"
             :key="step"
-            class="text-justify text-[1rem] p-2 pb-0 border-l-[3px] border-slate-600 shadow-slate-800 hover:text-sky-400 hover:border-sky-400 cursor-pointer"
+            class="text-justify text-[1rem] p-2 border-l-[3px] border-slate-600 shadow-slate-800 hover:text-sky-400 hover:border-sky-400 cursor-pointer"
           >
             {{ index + 1 }}. {{ step }}
           </p>
         </div>
       </div>
 
-      <div class="flex justify-center w-full flex-col items-start pb-4 mb-8">
+      <div class="flex justify-center w-full flex-col items-start mb-8">
         <h2 class="text-[1.7rem] font-bold pb-4 text-slate-200">
           Practice in Playground
         </h2>

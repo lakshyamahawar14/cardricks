@@ -1,6 +1,6 @@
 <template>
   <div
-    class="fixed flex w-full md:flex lg:flex left-0 top-[60px] md:w-[325px] lg:w-[325px] h-[calc(100vh-60px)] bg-slate-900 border-r-[1px] border-slate-700 flex-col items-start p-6 lg:pl-16 overflow-hidden z-[20]"
+    class="fixed flex w-full h-[calc(100vh-60px)] md:flex lg:flex left-0 top-[60px] md:w-[325px] lg:w-[325px] bg-slate-900 border-r-[1px] border-slate-700 flex-col items-start p-6 lg:pl-16 overflow-y-auto z-[20]"
     :style="{
       display: store.isSmallScreen && !store.isMenuOpen ? 'none' : 'flex',
     }"
