@@ -1,6 +1,6 @@
 <template>
   <div
-    class="p-6 pt-[calc(60px+1.5rem+50px)] py-[calc(60px+1.5rem)] lg:py-[calc(60px+2.5rem)] lg:p-10 lg:pr-16 flex flex-col justify-between"
+    class="p-6 pt-[calc(60px+1.5rem+50px)] md:pt-[calc(60px+1.5rem)] lg:pt-[calc(60px+2.5rem)] lg:p-10 lg:pr-16 flex flex-col justify-between"
   >
     <div class="flex justify-center items-start flex-col pb-4">
       <div class="flex lg:hidden md:hidden w-full">

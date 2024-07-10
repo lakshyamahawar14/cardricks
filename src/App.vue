@@ -1,7 +1,7 @@
 <template>
   <div class="w-auto h-auto overflow-hidden">
-    <LeftMenu />
     <Header />
+    <LeftMenu />
     <div
       class="flex relative w-full min-h-[100vh] top-0 justify-start items-start overflow-auto bg-slate-900"
       :style="{

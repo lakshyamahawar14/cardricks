@@ -1,8 +1,11 @@
 <template>
   <div
-    class="flex h-full justify-start flex-col items-center bg-slate-900 overflow-hidden"
+    class="p-6 pt-[calc(60px+1.5rem)] flex flex-col justify-center items-center"
   >
-    <div class="absolute top-[calc(60px+1rem)] z-[15]">
+    <div
+      class="absolute top-[calc(60px+0.5rem)] z-[15]"
+      :class="{ 'top-2': isFullscreen }"
+    >
       <PlaygroundTools
         :isFullscreen="isFullscreen"
         @toggle-fullscreen="togglePlayground"
@@ -12,7 +15,10 @@
     </div>
 
     <div
-      class="relative h-full w-full flex p-2 pt-[calc(60px+0.5rem)] bg-slate-900 overflow-auto"
+      class="h-[calc(100vh-60px-3rem)] w-full p-2 flex bg-slate-900 overflow-auto items-end justify-start"
+      :style="{
+        height: isFullscreen ? '100vh' : '',
+      }"
     >
       <div
         v-for="(suit, suitIndex) in suits"
@@ -155,5 +161,6 @@ watch(
   width: 100vw;
   height: 100vh;
   z-index: 100000;
+  padding: 0;
 }
 </style>
