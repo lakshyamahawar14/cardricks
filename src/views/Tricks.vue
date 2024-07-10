@@ -1,8 +1,12 @@
 <template>
   <div
-    class="p-6 py-[calc(60px+1.5rem)] lg:py-[calc(60px+2.5rem)] lg:p-10 lg:pr-16 flex flex-col justify-between"
+    class="p-6 pt-[calc(60px+1.5rem+50px)] py-[calc(60px+1.5rem)] lg:py-[calc(60px+2.5rem)] lg:p-10 lg:pr-16 flex flex-col justify-between"
   >
     <div class="flex justify-center items-start flex-col pb-4">
+      <div class="flex lg:hidden md:hidden w-full">
+        <TopMenu />
+      </div>
+
       <div class="flex flex-col w-full">
         <div class="flex justify-start flex-col items-start w-full">
           <h2 class="font-medium text-sky-400">
@@ -14,14 +18,16 @@
           >
             {{ currentLink?.text }}
           </h1>
-          <h2 class="text-[1.2rem]">{{ currentLink?.description }}</h2>
+          <h2 class="text-[1.2rem]">
+            {{ currentLink?.description }}
+          </h2>
         </div>
 
         <div class="w-full py-8">
           <p
             v-for="(step, index) in currentLink?.steps"
             :key="step"
-            class="text-justify text-[1rem] p-2 border-l-[3px] border-slate-600 shadow-slate-800 hover:text-sky-400 hover:border-sky-400 cursor-pointer"
+            class="text-justify text-[1rem] p-2 border-l-[3px] border-slate-600 shadow-slate-800 hover:text-sky-400 hover:border-sky-400 !cursor-pointer"
           >
             {{ index + 1 }}. {{ step }}
           </p>
@@ -48,6 +54,7 @@
 import { store, getLinks } from "../store";
 import { onMounted, ref, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
+import TopMenu from "../components/TopMenu.vue";
 
 const router = useRouter();
 const route = useRoute();
@@ -107,4 +114,10 @@ function scrollToElement() {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+h1,
+h2,
+p {
+  cursor: text;
+}
+</style>

@@ -1,6 +1,6 @@
 <template>
   <header
-    class="fixed top-0 w-full h-[60px] bg-transparent flex justify-between items-center z-[25] lg:px-16 px-6 border-b-[1px] border-slate-700 backdrop-blur-md"
+    class="fixed top-0 w-full h-[60px] bg-transparent flex justify-between items-center z-[25] lg:px-16 px-6 border-b-[1px] border-slate-700 backdrop-blur-lg"
   >
     <div class="flex justify-start items-center">
       <Logo />
@@ -17,15 +17,6 @@
           class="text-[1.5rem] text-slate-800"
         />
       </a>
-      <button
-        class="block md:hidden lg:hidden ml-2 items-center justify-center"
-        @click="toggleMenu"
-      >
-        <FontAwesomeIcon
-          :icon="store.isMenuOpen ? faXmark : faBars"
-          class="text-[1.5rem] text-end text-slate-300 w-4"
-        />
-      </button>
     </div>
   </header>
 </template>
@@ -35,14 +26,8 @@ import Logo from "./Logo.vue";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fab } from "@fortawesome/free-brands-svg-icons";
-import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
-import { store, toggleMenuOpen } from "../store";
 
 library.add(fab);
-
-const toggleMenu = () => {
-  toggleMenuOpen();
-};
 </script>
 
 <style scoped></style>

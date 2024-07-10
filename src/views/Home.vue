@@ -1,6 +1,6 @@
 <template>
   <div
-    class="p-6 py-[calc(60px+1.5rem)] lg:py-[calc(60px+2.5rem)] lg:p-10 lg:pr-16 flex flex-col justify-start items-center"
+    class="p-6 py-[calc(60px+4rem)] lg:py-[calc(60px+2.5rem)] lg:p-10 lg:pr-16 flex flex-col justify-start items-center"
   >
     <div class="flex justify-center flex-col items-start mb-4 w-full">
       <h1
@@ -61,4 +61,10 @@ function scrollToElement() {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+h1,
+h2,
+p {
+  cursor: text;
+}
+</style>
