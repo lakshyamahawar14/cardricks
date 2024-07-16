@@ -1,9 +1,15 @@
 <template>
   <div
-    class="p-6 pt-[calc(60px+1.5rem)] flex flex-col justify-center items-center"
+    class="p-6 pt-[calc(60px+1.5rem+50px)] md:pt-[calc(60px+1.5rem)] lg:pt-[calc(60px+2.5rem)] flex flex-col justify-center items-center"
   >
     <div
-      class="absolute top-[calc(60px+0.5rem)] z-[15]"
+      class="flex lg:hidden md:hidden w-full"
+      :style="{ display: isFullscreen ? 'none' : 'flex' }"
+    >
+      <TopMenu />
+    </div>
+    <div
+      class="absolute top-[calc(60px+50px+0.5rem)] z-[15]"
       :style="{ top: isFullscreen ? '0.5rem' : '' }"
     >
       <PlaygroundTools
@@ -15,7 +21,7 @@
     </div>
 
     <div
-      class="h-[calc(100vh-60px-3rem)] w-full p-2 flex bg-slate-900 overflow-auto items-end justify-start"
+      class="h-[calc(100vh-60px-50px-3rem)] w-full p-2 flex bg-slate-900 overflow-auto items-end justify-start"
       :style="{
         height: isFullscreen ? '100vh' : '',
       }"
@@ -48,6 +54,7 @@ import Card from "../components/Card.vue";
 import PlaygroundTools from "../components/PlaygroundTools.vue";
 import { getLinks } from "../store";
 import { useRoute } from "vue-router";
+import TopMenu from "../components/TopMenu.vue";
 
 interface CardData {
   character: string;
@@ -156,11 +163,11 @@ watch(
 <style scoped>
 .fullscreen {
   position: fixed;
+  z-index: 30;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 100000;
   padding: 0;
 }
 </style>

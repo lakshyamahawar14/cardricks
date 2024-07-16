@@ -1,9 +1,9 @@
 <template>
   <div
-    class="fixed h-[50px] top-[60px] left-0 flex items-center justify-start w-full px-6 text-[0.9rem] border-b-[1px] border-slate-700 backdrop-blur-lg z-[25]"
+    class="fixed h-[50px] top-[60px] left-0 flex items-center justify-start w-full px-6 text-[0.9rem] border-b-[1px] border-slate-700 backdrop-blur-lg z-[20]"
   >
     <button
-      class="block md:hidden lg:hidden pr-4 items-center justify-center"
+      class="flex md:hidden lg:hidden pr-4 items-center justify-center"
       @click="toggleMenu"
     >
       <FontAwesomeIcon
